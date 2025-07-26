@@ -1,0 +1,22 @@
+- Points are validated amongst game/player/rotations
+    - Record builder indicates that points are true to reality
+
+File Additions
+    - Stats_Builder uses expand and creates rolling averages, helpers.schedule_stat might have same logic
+        - This exported ppg charts for all teams
+        - helpers.schedule_stat returns a df, probably with anticipation of creating visualizations
+    - Histogram has some ppg code
+    - Possession_Calculator has better histograms than Histogram and it has boxplots
+
+PPG Questions
+    - Does ppg decrease over the course of a season?
+        Visuals will help but not practical for analyzing all 30 teams
+        Is there a way to t-test this to put in a table?
+    - Does home/away matter?
+    - Do referees matter?
+
+Win Questions -- 'win' is defined as positive +/-
+    - Does possession efficiency matter?
+
+- Group by season
+    PPG u+/-  HPPG u+/-  APPG u+/-
