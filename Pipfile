@@ -7,6 +7,9 @@ name = "pypi"
 ipykernel = "*"
 pandas = "*"
 psycopg2 = "*"
+matplotlib = "*"
+seaborn = "*"
+scipy = "*"
 
 [dev-packages]
 

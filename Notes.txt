@@ -1,5 +1,14 @@
-- Points are validated amongst game/player/rotations
-    - Record builder indicates that points are true to reality
+source .venv/bin/activate
+
+- Points are validated between mathletics game/player/rotations
+    - Record builder matches external sources
+
+Game Level
+    - PPG
+        - All, home and away
+    - Wins
+        - All, home and away
+    - 
 
 File Additions
     - Stats_Builder uses expand and creates rolling averages, helpers.schedule_stat might have same logic
@@ -12,6 +21,9 @@ PPG Questions
     - Does ppg decrease over the course of a season?
         Visuals will help but not practical for analyzing all 30 teams
         Is there a way to t-test this to put in a table?
+        Show raw points scored for each game, averages will be skewed over the season
+            Remove Cup championship before expanding game #'s
+        Mean and median of each game #
     - Does home/away matter?
     - Do referees matter?
 

@@ -1,18 +1,46 @@
 import pandas as pd
 
-def cnxn_info():
+def backup_cnxn():
     from sqlalchemy import create_engine
     import psycopg2
-    # Cloud Connection Details
     database = 'mathletics_prod' #'mathletics-data'                                               
     host = 'localhost' #'35.231.81.254'
     user = 'postgres' #'bbqx'
     pgsql_pw = "CinCity79!"
-    con_string = f"postgresql://{user}:{pgsql_pw}@{host}/{database}"
+    port = 5432
+    con_string = f"postgresql://{user}:{pgsql_pw}@{host}:{port}/{database}"
     engine = create_engine(con_string)
     con = psycopg2.connect(con_string)
     return con, engine
 
+def cloud_cnxn():
+    from sqlalchemy import create_engine
+    import psycopg2
+    # Heroku Connection Details
+    database = 'dcchkn8kpopgf4'                                              
+    host = 'c3np6sk103ru76.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com'
+    user = 'uegq769s81o426' #'bbqx'
+    pgsql_pw = 'p8721cc31fc535479daebd2bb4cf5778ae9ccedeba4523f8ecd34efd0b57f8718'
+    port = 5432
+    con_string = f"postgresql://{user}:{pgsql_pw}@{host}:{port}/{database}"
+    engine = create_engine(con_string)
+    con = psycopg2.connect(con_string)
+    return con, engine    
+
+def local_cnxn():
+    from sqlalchemy import create_engine
+    import psycopg2
+    # Container Connection Details
+    database = 'mathletics-local'                                              
+    host = 'localhost'
+    user = 'user' #'bbqx'
+    pgsql_pw = "CinCity79!"
+    port = 5433
+    con_string = f"postgresql://{user}:{pgsql_pw}@{host}:{port}/{database}"
+    engine = create_engine(con_string)
+    con = psycopg2.connect(con_string)
+    return con, engine
+     
 def get_libraries():
     import os
     import subprocess
@@ -46,6 +74,9 @@ def get_teams():
     team_info = pd.read_sql_query("select * from teams",con=cnxn_info()[1])  # Read in team info
     team_info.set_index("team_id",inplace=True)                      # Set index of team info to 'team_id'
     return team_info
+
+def current_odds_url():
+    return "https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey={}&regions=us&markets={}"
 
 def historical_odds_url():
     return "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/odds?apiKey={}&regions=us&markets={}&date={}"
@@ -160,7 +191,11 @@ def season_conversion(season):
     return season_for_table
 
 def seasons():
-    list_of_seasons = ["2021-22","2022-23","2023-24","2024-25"]
+    list_of_seasons = ["2021-22"
+                       ,"2022-23"
+                       ,"2023-24"
+                       ,"2024-25"
+                       ,"2025-26"]
     return list_of_seasons
 
 

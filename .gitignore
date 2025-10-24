@@ -1,6 +1,4 @@
 
-# source .venv/bin/activate
-
 .venv/
 .vscode/
 reports/*
