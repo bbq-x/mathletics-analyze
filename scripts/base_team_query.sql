@@ -1,0 +1,1 @@
+select * from "202526".game_details limit 10
